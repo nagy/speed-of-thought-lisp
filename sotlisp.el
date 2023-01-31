@@ -501,7 +501,10 @@ If `speed-of-thought-mode' is already on, call ON."
     ("\C-cf"    . sotlisp-find-or-define-function)
     ("\C-cv"    . sotlisp-find-or-define-variable))
   (if sotlisp-mode
-      (abbrev-mode 1)
+      (progn
+        (sotlisp-define-all-abbrevs)
+        (abbrev-mode 1))
+    (sotlisp-erase-all-abbrevs)
     (kill-local-variable 'abbrev-mode)))
 
 (defun sotlisp-turn-on-everywhere ()
