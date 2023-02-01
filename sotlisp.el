@@ -181,8 +181,8 @@ Point is left where the `$' char was.  Does nothing if variable
 
 (defun sotlisp--maybe-skip-closing-paren ()
   "Move past `)' if variable `electric-pair-mode' is enabled."
-  (when (and (char-after ?\))
-             (sotlisp--auto-paired-p))
+  (when (and  (eq ?\) (char-after))
+              (sotlisp--auto-paired-p))
     (forward-char 1)))
 
 (defun sotlisp--post-expansion-cleanup ()
